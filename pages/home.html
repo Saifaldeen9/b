@@ -1,0 +1,54 @@
+<div>
+    <h2 class="text-2xl mb-4">إدارة الموظفين</h2>
+    <form id="employeeForm" class="grid grid-cols-2 gap-4">
+        <input type="text" id="firstName" class="border p-2" placeholder="الاسم الأول">
+        <input type="text" id="middleName" class="border p-2" placeholder="اسم الأب">
+        <input type="text" id="lastName" class="border p-2" placeholder="الكنية">
+        <input type="email" id="email" class="border p-2" placeholder="البريد الإلكتروني">
+        <input type="password" id="password" class="border p-2" placeholder="كلمة المرور">
+        <input type="text" id="phoneNumber" class="border p-2" placeholder="رقم الهاتف">
+        <select id="job" class="border p-2">
+            <option value="owner">المالك</option>
+            <option value="manager">مدير قسم</option>
+            <option value="operations">عمليات</option>
+            <option value="sales">مبيعات</option>
+            <option value="accountant">محاسب</option>
+            <option value="marketing">التسويق</option>
+            <option value="hr">إدارة الموارد البشرية</option>
+            <option value="technology">تطوير التكنولوجيا</option>
+            <option value="it">تكنولوجيا المعلومات</option>
+        </select>
+        <input type="date" id="startDate" class="border p-2"> 
+        <input type="text" id="endDate" class="border p-2" placeholder="متاح">
+        <label><input type="checkbox" id="superAdmin"> مدير النظام</label>
+        <label><input type="checkbox" id="accounting"> المحاسبة</label>
+        <label><input type="checkbox" id="sales"> المبيعات</label>
+        <label><input type="checkbox" id="operations"> العمليات</label>
+        <label><input type="checkbox" id="logs"> السجلات</label>
+        <label><input type="checkbox" id="marketing"> التسويق</label>
+        <label><input type="checkbox" id="technology"> تطوير التكنولوجيا</label>
+        <input type="file" id="profilePicture" class="border p-2">
+        <button type="submit" class="bg-blue-500 text-white p-2 rounded">إضافة</button>
+    </form>
+    <table class="min-w-full divide-y divide-gray-200 mt-4">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>الاسم الأول</th>
+                <th>اسم الأب</th>
+                <th>الكنية</th>
+                <th>البريد الإلكتروني</th>
+                <th>رقم الهاتف</th>
+                <th>الوظيفة</th>
+                <th>تاريخ البدء</th>
+                <th>تاريخ الانتهاء</th>
+                <th>الأقسام المتاحة</th>
+                <th>تحرير</th>
+                <th>حذف</th>
+            </tr>
+        </thead>
+        <tbody id="employeeTableBody">
+            <!-- Employee rows will be appended here dynamically -->
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BBOX Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-gray-100">
+    <header class="bg-orange-500 p-4 flex items-center justify-between">
+        <img src="assets/logo.png" alt="BBOX Logo" class="h-16 rounded-full">
+        <h1 class="text-white text-3xl">BBOX إدارة الموظفين</h1>
+        <div class="flex items-center">
+            <select id="languageSelect" class="bg-gray-200 p-2 rounded ml-4">
+                <option value="ar">AR</option>
+                <option value="en">EN</option>
+            </select>
+            <button id="logoutButton" class="bg-gray-800 text-white p-2 rounded ml-4">تسجيل الخروج</button>
+        </div>
+    </header>
+    <nav class="bg-gray-800 text-white p-4">
+        <a href="home.html" class="mr-4">مدير النظام</a>
+        <a href="accounting.html" class="mr-4">المحاسبة</a>
+        <a href="sales.html" class="mr-4">المبيعات</a>
+        <a href="operations.html" class="mr-4">العمليات</a>
+        <a href="logs.html" class="mr-4">السجلات</a>
+        <a href="marketing.html" class="mr-4">التسويق</a>
+        <a href="technology.html" class="mr-4">تطوير التكنولوجيا</a>
+    </nav>
+    <div class="flex">
+        <aside class="bg-gray-200 w-1/4 p-4">
+            <button id="addEmployeeButton" class="w-full bg-blue-500 text-white p-2 rounded mb-4">إضافة موظف</button>
+            <button id="editDeleteEmployeeButton" class="w-full bg-green-500 text-white p-2 rounded">تحرير وحذف موظف</button>
+        </aside>
+        <main class="w-3/4 p-4">
+            <!-- Main content will be loaded here dynamically -->
+        </main>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+</html>
