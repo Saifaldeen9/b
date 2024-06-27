@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operations</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .font-serif {
+            font-family: serif;
+        }
+        .logo {
+            border-radius: 50%;
+            height: 48px;
+            width: 48px;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen bg-gray-100">
+
+    <!-- Header -->
+    <header class="bg-yellow-500 h-45 flex items-center justify-between px-8 shadow-md">
+        <img src="./bee-logo.jpg" alt="Logo" class="logo">
+        <h1 class="font-serif p-3 text-white text-4xl text-center">Welcome to BBox Admin</h1>
+        <div>
+            <select class="bg-white text-black py-2 px-4 rounded">
+                <option value="en">EN</option>
+                <option value="ar">AR</option>
+            </select>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="flex flex-grow">
+        <!-- Sidebar -->
+        <aside class="bg-gray-800 text-white w-64 py-4 px-3">
+            <nav>
+                <ul>
+                    <li class="mb-2">
+                        <button class="w-full text-left py-2 px-4 bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 toggle-submenu">
+                            Admin
+                        </button>
+                        <ul class="pl-4 mt-2 space-y-2 submenu hidden">
+                            <li>
+                                <a href="./newemployee.html" class="block py-1 px-2 bg-gray-700 rounded hover:bg-gray-600">New employee</a>
+                            </li>
+                            <li>
+                                <a href="./editstatusemployee.html" class="block py-1 px-2 bg-gray-700 rounded hover:bg-gray-600">Edit and status</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="mb-2">
+                        <button class="w-full text-left py-2 px-4 bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 toggle-submenu">
+                            Marketing
+                        </button>
+                    </li>
+                    <li class="mb-2">
+                        <button class="w-full text-left py-2 px-4 bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 toggle-submenu">
+                            Sales
+                        </button>
+                    </li>
+                    <li class="mb-2">
+                        <button class="w-full text-left py-2 px-4 bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 toggle-submenu">
+                            Accounting
+                        </button>
+                    </li>
+                    <li class="mb-2">
+                        <button class="w-full text-left py-2 px-4 bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 toggle-submenu">
+                            Operations
+                        </button>
+                        <ul class="pl-4 mt-2 space-y-2 submenu hidden">
+                            <li>
+                                <a href="./operations.html" class="block py-1 px-2 bg-gray-700 rounded hover:bg-gray-600">New vender</a>
+                            </li>
+                            <li>
+                                <a href="./showvender.html" class="block py-1 px-2 bg-gray-700 rounded hover:bg-gray-600">Show venders</a>
+                            </li>
+                            <li>
+                                <a href="./productnew.html" class="block py-1 px-2 bg-gray-700 rounded hover:bg-gray-600">Add product</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="mb-2">
+                        <button class="w-full text-left py-2 px-4 bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 toggle-submenu">
+                            Logs
+                        </button>
+                    </li>
+                    <li>
+                        <button class="w-full text-left py-2 px-4 bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 toggle-submenu">
+                            Developments
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main section -->
+        <main class="flex-grow p-8">
+            <h2 class="text-2xl font-bold text-gray-700 mb-4">New Vender</h2>
+            <form id="venderForm">
+                <!-- Register Vender Group -->
+                <fieldset class="border border-gray-300 p-4 rounded mb-4">
+                    <legend class="text-lg font-semibold">Register Vender</legend>
+                    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                        <div>
+                            <label for="businessName" class="block text-gray-700">Business Name</label>
+                            <input type="text" id="businessName" name="businessName" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+                        </div>
+                        <div>
+                            <label for="ownerFirstName" class="block text-gray-700">Owner First Name</label>
+                            <input type="text" id="ownerFirstName" name="ownerFirstName" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+                        </div>
+                        <div>
+                            <label for="ownerLastName" class="block text-gray-700">Owner Last Name</label>
+                            <input type="text" id="ownerLastName" name="ownerLastName" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+                        </div>
+                        <div>
+                            <label for="phone1" class="block text-gray-700">Phone #1</label>
+                            <input type="tel" id="phone1" name="phone1" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+                        </div>
+                        <div>
+                            <label for="phone2" class="block text-gray-700">Phone #2</label>
+                            <input type="tel" id="phone2" name="phone2" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700">Email</label>
+                            <input type="email" id="email" name="email" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                        </div>
+                        <div>
+                            <label for="branchNumber" class="block text-gray-700">Branch #</label>
+                            <input type="text" id="branchNumber" name="branchNumber" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                        </div>
+                        <div>
+                            <label for="sellingType" class="block text-gray-700">Selling Type</label>
+                            <select id="sellingType" name="sellingType" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                                <option value="Automotive">Automotive</option>
+                                <option value="Cloths">Cloths</option>
+                                <option value="Food">Food</option>
+                                <option value="Home appliances">Home appliances</option>
+                                <option value="Electric appliances">Electric appliances</option>
+                                <option value="Electronics">Electronics</option>
+                                <option value="Computers">Computers</option>
+                                <option value="Phones items">Phones items</option>
+                                <option value="Medical appliances">Medical appliances</option>
+                                <option value="Tools">Tools</option>
+                                <option value="Constructions tools">Constructions materials</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="placeIn" class="block text-gray-700">Place In</label>
+                            <select id="placeIn" name="placeIn" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                                <option value="Store">Store</option>
+                                <option value="Home">Home</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="logo" class="block text-gray-700">Upload Logo</label>
+                            <input type="file" id="logo" name="logo" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Store Address Group -->
+                <fieldset class="border border-gray-300 p-4 rounded mb-4">
+                    <legend class="text-lg font-semibold">Store Address</legend>
+                    <div id="addressContainer">
+                        <div class="grid grid-cols-1 gap-4 md:grid-cols-2 mb-4">
+                            <div>
+                                <label for="province" class="block text-gray-700">Province</label>
+                                <select id="province" name="province" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                                    <option value="Baghdad" >بغداد</option>
+                                    <option value="Basra">البصرة</option>
+                                    <option value="Duhok">دهوك</option>
+                                    <option value="Erbil">أربيل</option>
+                                    <option value="Kirkuk">كركوك</option>
+                                    <option value="Najaf">النجف</option>
+                                    <option value="Sulaymaniyah">السليمانية</option>
+                                    <option value="Karbala">كربلاء</option>
+                                    <option value="Maysan">ميسان</option>
+                                    <option value="Wasit">واسط</option>
+                                    <option value="Babylon">بابل</option>
+                                    <option value="Diyala" selected>ديالى</option>
+                                    <option value="Salahaddin">صلاح الدين</option>
+                                    <option value="Al-Qadisiyyah">القادسية</option>
+                                    <option value="Al-Muthanna">المثنى</option>
+                                    <option value="Anbar">الأنبار</option>
+                                    <option value="Nineveh">نينوى</option>
+                                    <option value="Al-Samawah">السماوة</option>
+                                </select>
+                                
+                            </div>
+                            <div>
+                                <label for="cityName" class="block text-gray-700">City Name</label>
+                                <input type="text" id="cityName" name="cityName" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                            </div>
+                            <div>
+                                <label for="neighborhood" class="block text-gray-700">Neighborhood</label>
+                                <input type="text" id="neighborhood" name="neighborhood" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                            </div>
+                            <div>
+                                <label for="town" class="block text-gray-700">Town</label>
+                                <input type="text" id="town" name="town" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                            </div>
+                            <div class="col-span-2">
+                                <label for="describe" class="block text-gray-700">Describe</label>
+                                <textarea id="describe" name="describe" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="bg-green-500 text-white py-2 px-4 rounded shadow hover:bg-green-600" id="addAddress">+ Add Address</button>
+                </fieldset>
+
+                <!-- Status Group -->
+                <fieldset class="border border-gray-300 p-4 rounded mb-4">
+                    <legend class="text-lg font-semibold">Status</legend>
+                    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                        <div>
+                            <label for="status" class="block text-gray-700">Status</label>
+                            <select id="status" name="status" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                                <option value="Active">Active</option>
+                                <option value="Inactive">Inactive</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="startDate" class="block text-gray-700">Starting Day</label>
+                            <input type="date" id="startDate" name="startDate" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                        </div>
+                    </div>
+                </fieldset>
+
+                <button type="submit" class="bg-yellow-700 text-white py-2 px-4 rounded shadow hover:bg-yellow-800">Add Vender</button>
+            </form>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-4 text-center mt-auto">
+        <p>&copy; 2024 BBox Admin. All rights reserved.</p>
+    </footer>
+
+    <!-- Include jQuery script file -->
+    <script src="./scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+[
+  {
+    "businessName": "دينت",
+    "ownerFirstName": "هىه",
+    "ownerLastName": "هه",
+    "phone1": "98098",
+    "phone2": "",
+    "email": "",
+    "branchNumber": "",
+    "sellingType": "Automotive",
+    "placeIn": "Store",
+    "province": "Diyala",
+    "cityName": "",
+    "neighborhood": "",
+    "town": "",
+    "describe": "",
+    "status": "Active",
+    "startDate": "",
+    "vendorId": "V1FCJ8QARB"
+  },
+  {
+    "businessName": "جلال ",
+    "ownerFirstName": "دامو",
+    "ownerLastName": "جال",
+    "phone1": "78987987",
+    "phone2": "",
+    "email": "toligher@gmail.com",
+    "branchNumber": "1",
+    "sellingType": "Automotive",
+    "placeIn": "Store",
+    "province": "Diyala",
+    "cityName": "",
+    "neighborhood": "",
+    "town": "",
+    "describe": "",
+    "status": "Active",
+    "startDate": "",
+    "vendorId": "V014PHIBWY"
+  }
+]

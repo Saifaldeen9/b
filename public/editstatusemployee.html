@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit and Status Employee</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .font-serif {
+            font-family: serif;
+        }
+        .logo {
+            border-radius: 50%;
+            height: 48px;
+            width: 48px;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen bg-gray-100">
+
+    <!-- Header -->
+    <header class="bg-yellow-500 h-45 flex items-center justify-between px-8 shadow-md">
+        <img src="./bee-logo.jpg" alt="Logo" class="logo">
+        <h1 class="font-serif p-3 text-white text-4xl text-center">Welcome to BBox Admin</h1>
+        <div>
+            <select class="bg-white text-black py-2 px-4 rounded">
+                <option value="en">EN</option>
+                <option value="ar">AR</option>
+            </select>
+            <span id="employeeDetails" class="text-white ml-4"></span>
+            <button id="logout" class="ml-4 py-2 px-4 bg-red-500 text-white rounded">Logout</button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="flex flex-grow">
+        <!-- Sidebar -->
+        <aside class="bg-gray-800 text-white w-64 py-4 px-3">
+            <nav>
+                <ul>
+                    <li class="mb-2">
+                        <button class="w-full text-left py-2 px-4 bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 toggle-submenu">
+                            Admin
+                        </button>
+                        <ul class="pl-4 mt-2 space-y-2 submenu hidden">
+                            <li>
+                                <a href="newemployee.html" class="block py-1 px-2 bg-gray-700 rounded hover:bg-gray-600">New employee</a>
+                            </li>
+                            <li>
+                                <a href="editstatusemployee.html" class="block py-1 px-2 bg-gray-700 rounded hover:bg-gray-600">Edit and status</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="mb-2">
+                        <button class="w-full text-left py-2 px-4 bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 toggle-submenu">
+                            Marketing
+                        </button>
+                    </li>
+                    <li class="mb-2">
+                        <button class="w-full text-left py-2 px-4 bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 toggle-submenu">
+                            Sales
+                        </button>
+                    </li>
+                    <li class="mb-2">
+                        <button class="w-full text-left py-2 px-4 bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 toggle-submenu">
+                            Accounting
+                        </button>
+                    </li>
+                    <li class="mb-2">
+                        <button class="w-full text-left py-2 px-4 bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 toggle-submenu">
+                            Operations
+                        </button>
+                        <ul class="pl-4 mt-2 space-y-2 submenu hidden">
+                            <li>
+                                <a href="./operations.html" class="block py-1 px-2 bg-gray-700 rounded hover:bg-gray-600">New vender</a>
+                            </li>
+                            <li>
+                                <a href="./showvender.html" class="block py-1 px-2 bg-gray-700 rounded hover:bg-gray-600">Show venders</a>
+                            </li>
+                            <li>
+                                <a href="./productnew.html" class="block py-1 px-2 bg-gray-700 rounded hover:bg-gray-600">Add product</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="mb-2">
+                        <button class="w-full text-left py-2 px-4 bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 toggle-submenu">
+                            Logs
+                        </button>
+                    </li>
+                    <li>
+                        <button class="w-full text-left py-2 px-4 bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 toggle-submenu">
+                            Developments
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main section -->
+        <main class="flex-grow p-8">
+            <h2 class="text-2xl font-bold text-gray-700 mb-4">Edit and Status Employee</h2>
+            <input type="text" id="searchEmployee" placeholder="Search Employees by ID" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 mb-4">
+            <div id="employeeList" class="grid grid-cols-1 gap-4 md:grid-cols-2"></div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-4 text-center mt-auto">
+        <p>&copy; 2024 BBox Admin. All rights reserved.</p>
+    </footer>
+
+    <!-- Include jQuery script file -->
+    <script src="scripts.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Load all employees initially
+            $.ajax({
+                url: 'http://localhost:3000/get_employees',
+                type: 'GET',
+                success: function(response) {
+                    displayEmployees(response);
+                },
+                error: function(error) {
+                    console.log('Error fetching employees:', error);
+                }
+            });
+
+            // Search functionality
+            $('#searchEmployee').on('input', function() {
+                var searchQuery = $(this).val().toLowerCase();
+                if (searchQuery === "") {
+                    $.ajax({
+                        url: 'http://localhost:3000/get_employees',
+                        type: 'GET',
+                        success: function(response) {
+                            displayEmployees(response);
+                        },
+                        error: function(error) {
+                            console.log('Error fetching employees:', error);
+                        }
+                    });
+                } else {
+                    $.ajax({
+                        url: `http://localhost:3000/search_employee?employeeId=${searchQuery}`,
+                        type: 'GET',
+                        success: function(response) {
+                            displayEmployees([response]);
+                        },
+                        error: function(error) {
+                            console.log('Error searching employee:', error);
+                        }
+                    });
+                }
+            });
+
+            // Display employees
+            function displayEmployees(employees) {
+                var employeeList = $('#employeeList');
+                employeeList.empty();
+                employees.forEach(function(employee) {
+                    var employeeItem = `
+                        <div class="p-4 bg-white border border-gray-300 rounded shadow">
+                            <h3 class="text-xl font-bold text-gray-700">${employee.firstName} ${employee.lastName}</h3>
+                            <p class="text-gray-500">ID: ${employee.employeeId}</p>
+                            <p class="text-gray-500">Email: ${employee.email}</p>
+                            <p class="text-gray-500">Phone: ${employee.phoneNumber}</p>
+                            <p class="text-gray-500">State: ${employee.state}</p>
+                            <button class="bg-blue-500 text-white py-2 px-4 rounded mt-2 edit-employee" data-id="${employee.employeeId}">Edit</button>
+                        </div>
+                    `;
+                    employeeList.append(employeeItem);
+                });
+            }
+
+            // Edit employee
+            $(document).on('click', '.edit-employee', function() {
+                var employeeId = $(this).data('id');
+                window.location.href = 'venderupdate.html?employeeId=' + employeeId;
+            });
+        });
+    </script>
+</body>
+</html>

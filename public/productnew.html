@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Product</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .font-serif {
+            font-family: serif;
+        }
+        .logo {
+            border-radius: 50%;
+            height: 48px;
+            width: 48px;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen bg-gray-100">
+
+    <!-- Header -->
+    <header class="bg-yellow-500 h-45 flex items-center justify-between px-8 shadow-md">
+        <img src="./bee-logo.jpg" alt="Logo" class="logo">
+        <h1 class="font-serif p-3 text-white text-4xl text-center">Welcome to BBox Admin</h1>
+        <div>
+            <select class="bg-white text-black py-2 px-4 rounded">
+                <option value="en">EN</option>
+                <option value="ar">AR</option>
+            </select>
+            <span id="employeeDetails" class="text-white ml-4"></span>
+            <button id="logout" class="ml-4 py-2 px-4 bg-red-500 text-white rounded">Logout</button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="flex flex-grow">
+        <!-- Sidebar -->
+        <aside class="bg-gray-800 text-white w-64 py-4 px-3">
+            <nav>
+                <ul>
+                    <li class="mb-2">
+                        <button class="w-full text-left py-2 px-4 bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 toggle-submenu">
+                            Admin
+                        </button>
+                        <ul class="pl-4 mt-2 space-y-2 submenu hidden">
+                            <li>
+                                <a href="./newemployee.html" class="block py-1 px-2 bg-gray-700 rounded hover:bg-gray-600">New employee</a>
+                            </li>
+                            <li>
+                                <a href="./editstatusemployee.html" class="block py-1 px-2 bg-gray-700 rounded hover:bg-gray-600">Edit and status</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="mb-2">
+                        <button class="w-full text-left py-2 px-4 bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 toggle-submenu">
+                            Marketing
+                        </button>
+                    </li>
+                    <li class="mb-2">
+                        <button class="w-full text-left py-2 px-4 bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 toggle-submenu">
+                            Sales
+                        </button>
+                    </li>
+                    <li class="mb-2">
+                        <button class="w-full text-left py-2 px-4 bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 toggle-submenu">
+                            Accounting
+                        </button>
+                    </li>
+                    <li class="mb-2">
+                        <button class="w-full text-left py-2 px-4 bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 toggle-submenu">
+                            Operations
+                        </button>
+                        <ul class="pl-4 mt-2 space-y-2 submenu hidden">
+                            <li>
+                                <a href="./operations.html" class="block py-1 px-2 bg-gray-700 rounded hover:bg-gray-600">New vender</a>
+                            </li>
+                            <li>
+                                <a href="./showvender.html" class="block py-1 px-2 bg-gray-700 rounded hover:bg-gray-600">Show venders</a>
+                            </li>
+                            <li>
+                                <a href="./productnew.html" class="block py-1 px-2 bg-gray-700 rounded hover:bg-gray-600">Add product</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="mb-2">
+                        <button class="w-full text-left py-2 px-4 bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 toggle-submenu">
+                            Logs
+                        </button>
+                    </li>
+                    <li>
+                        <button class="w-full text-left py-2 px-4 bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 toggle-submenu">
+                            Developments
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main section -->
+        <main class="flex-grow p-8">
+            <h2 class="text-2xl font-bold text-gray-700 mb-4">Add New Product</h2>
+            <input type="text" id="searchVendor" placeholder="Search Vendor by Name or ID" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 mb-4">
+            <div id="vendorDetails" class="mb-4"></div>
+
+            <form id="productForm">
+                <fieldset class="border border-gray-300 p-4 rounded mb-4">
+                    <legend class="text-lg font-semibold">Product Details</legend>
+                    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                        <div>
+                            <label for="productName" class="block text-gray-700">Product Name</label>
+                            <input type="text" id="productName" name="productName" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+                        </div>
+                        <div>
+                            <label for="productCategory" class="block text-gray-700">Category</label>
+                            <select id="productCategory" name="productCategory" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                                <option value="Automotive">Automotive</option>
+                                <option value="Auto parts">Auto parts</option>
+                                <option value="Cloths">Cloths</option>
+                                <option value="Food">Food</option>
+                                <option value="Vegetables">Vegetables</option>
+                                <option value="Home appliances">Home appliances</option>
+                                <option value="Electric appliances">Electric appliances</option>
+                                <option value="Electronics">Electronics</option>
+                                <option value="Computers">Computers</option>
+                                <option value="Phones items">Phones items</option>
+                                <option value="Medical appliances">Medical appliances</option>
+                                <option value="Tools">Tools</option>
+                                <option value="Constructions materials">Constructions materials</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="productDescription" class="block text-gray-700">Description</label>
+                            <textarea id="productDescription" name="productDescription" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500" required></textarea>
+                        </div>
+                        <div>
+                            <label for="productPrice" class="block text-gray-700">Price</label>
+                            <input type="number" id="productPrice" name="productPrice" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+                        </div>
+                        <div>
+                            <label for="productStock" class="block text-gray-700">Stock</label>
+                            <input type="number" id="productStock" name="productStock" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+                        </div>
+                        <div>
+                            <label for="productImages" class="block text-gray-700">Upload Images (up to 4)</label>
+                            <input type="file" id="productImages" name="productImages" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500" multiple required>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <button type="submit" class="bg-yellow-700 text-white py-2 px-4 rounded shadow hover:bg-yellow-800">Add Product</button>
+            </form>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-4 text-center mt-auto">
+        <p>&copy; 2024 BBox Admin. All rights reserved.</p>
+    </footer>
+
+    <!-- Include jQuery script file -->
+    <script src="scripts.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Search vendor functionality
+            $('#searchVendor').on('input', function() {
+                var searchQuery = $(this).val().toLowerCase();
+
+                if (searchQuery) {
+                    // AJAX call to search vendor
+                    $.ajax({
+                        url: `http://localhost:3000/search_vendor?query=${searchQuery}`,
+                        type: 'GET',
+                        success: function(response) {
+                            displayVendor(response);
+                        },
+                        error: function(error) {
+                            $('#vendorDetails').html('<p class="text-red-500">Vendor not found.</p>');
+                        }
+                    });
+                } else {
+                    $('#vendorDetails').html('');
+                }
+            });
+
+            // Display vendor details
+            function displayVendor(vendor) {
+                var vendorHtml = `
+                    <div class="p-4 bg-white border border-gray-300 rounded shadow">
+                        <h3 class="text-xl font-bold text-gray-700">${vendor.businessName}</h3>
+                        <p class="text-gray-500">ID: ${vendor.vendorId}</p>
+                        <p class="text-gray-500">Status: ${vendor.status}</p>
+                    </div>
+                `;
+                $('#vendorDetails').html(vendorHtml);
+            }
+
+            // Form submission for adding product
+            $('#productForm').submit(function(event) {
+                event.preventDefault();
+
+                var formData = new FormData(this);
+                var vendorDetails = $('#vendorDetails div').text();
+                if (!vendorDetails) {
+                    alert('Please select a vendor first.');
+                    return;
+                }
+
+                // Add vendor ID to the form data
+                var vendorId = $('#vendorDetails').find('p:contains("ID:")').text().split(': ')[1];
+                formData.append('vendorId', vendorId);
+
+                // AJAX call to save product data
+                $.ajax({
+                    url: 'http://localhost:3000/save_product',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        alert('Product information saved successfully.');
+                        $('#productForm')[0].reset();
+                    },
+                    error: function(error) {
+                        alert('An error occurred while saving product information.');
+                    }
+                });
+            });
+
+            // Handle logout
+            $("#logout").click(function() {
+                // Perform logout operation
+                window.location.href = 'index.html';
+            });
+        });
+    </script>
+</body>
+</html>

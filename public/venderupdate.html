@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Vendor</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .font-serif {
+            font-family: serif;
+        }
+        .logo {
+            border-radius: 50%;
+            height: 48px;
+            width: 48px;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen bg-gray-100">
+
+    <!-- Header -->
+    <header class="bg-yellow-500 h-45 flex items-center justify-between px-8 shadow-md">
+        <img src="./bee-logo.jpg" alt="Logo" class="logo">
+        <h1 class="font-serif p-3 text-white text-4xl text-center">Welcome to BBox Admin</h1>
+        <div>
+            <select class="bg-white text-black py-2 px-4 rounded">
+                <option value="en">EN</option>
+                <option value="ar">AR</option>
+            </select>
+            <span id="employeeDetails" class="text-white ml-4"></span>
+            <button id="logout" class="ml-4 py-2 px-4 bg-red-500 text-white rounded">Logout</button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="flex flex-grow">
+        <!-- Sidebar -->
+        <aside class="bg-gray-800 text-white w-64 py-4 px-3">
+            <nav>
+                <ul>
+                    <li class="mb-2">
+                        <button class="w-full text-left py-2 px-4 bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 toggle-submenu">
+                            Admin
+                        </button>
+                        <ul class="pl-4 mt-2 space-y-2 submenu hidden">
+                            <li>
+                                <a href="./newemployee.html" class="block py-1 px-2 bg-gray-700 rounded hover:bg-gray-600">New employee</a>
+                            </li>
+                            <li>
+                                <a href="./editstatusemployee.html" class="block py-1 px-2 bg-gray-700 rounded hover:bg-gray-600">Edit and status</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="mb-2">
+                        <button class="w-full text-left py-2 px-4 bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 toggle-submenu">
+                            Marketing
+                        </button>
+                    </li>
+                    <li class="mb-2">
+                        <button class="w-full text-left py-2 px-4 bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 toggle-submenu">
+                            Sales
+                        </button>
+                    </li>
+                    <li class="mb-2">
+                        <button class="w-full text-left py-2 px-4 bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 toggle-submenu">
+                            Accounting
+                        </button>
+                    </li>
+                    <li class="mb-2">
+                        <button class="w-full text-left py-2 px-4 bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 toggle-submenu">
+                            Operations
+                        </button>
+                        <ul class="pl-4 mt-2 space-y-2 submenu hidden">
+                            <li>
+                                <a href="./operations.html" class="block py-1 px-2 bg-gray-700 rounded hover:bg-gray-600">New vender</a>
+                            </li>
+                            <li>
+                                <a href="./showvender.html" class="block py-1 px-2 bg-gray-700 rounded hover:bg-gray-600">Show venders</a>
+                            </li>
+                            <li>
+                                <a href="./productnew.html" class="block py-1 px-2 bg-gray-700 rounded hover:bg-gray-600">Add product</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="mb-2">
+                        <button class="w-full text-left py-2 px-4 bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 toggle-submenu">
+                            Logs
+                        </button>
+                    </li>
+                    <li>
+                        <button class="w-full text-left py-2 px-4 bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 toggle-submenu">
+                            Developments
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main section -->
+        <main class="flex-grow p-8">
+            <h2 class="text-2xl font-bold text-gray-700 mb-4">Update Vendor</h2>
+            <form id="updateVenderForm">
+                <!-- Register Vender Group -->
+                <fieldset class="border border-gray-300 p-4 rounded mb-4">
+                    <legend class="text-lg font-semibold">Update Vender</legend>
+                    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                        <div>
+                            <label for="businessName" class="block text-gray-700">Business Name</label>
+                            <input type="text" id="businessName" name="businessName" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+                        </div>
+                        <div>
+                            <label for="ownerFirstName" class="block text-gray-700">Owner First Name</label>
+                            <input type="text" id="ownerFirstName" name="ownerFirstName" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+                        </div>
+                        <div>
+                            <label for="ownerLastName" class="block text-gray-700">Owner Last Name</label>
+                            <input type="text" id="ownerLastName" name="ownerLastName" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+                        </div>
+                        <div>
+                            <label for="phone1" class="block text-gray-700">Phone #1</label>
+                            <input type="tel" id="phone1" name="phone1" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+                        </div>
+                        <div>
+                            <label for="phone2" class="block text-gray-700">Phone #2</label>
+                            <input type="tel" id="phone2" name="phone2" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700">Email</label>
+                            <input type="email" id="email" name="email" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                        </div>
+                        <div>
+                            <label for="branchNumber" class="block text-gray-700">Branch #</label>
+                            <input type="text" id="branchNumber" name="branchNumber" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                        </div>
+                        <div>
+                            <label for="sellingType" class="block text-gray-700">Selling Type</label>
+                            <select id="sellingType" name="sellingType" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                                <option value="Automotive">Automotive</option>
+                                <option value="Cloths">Cloths</option>
+                                <option value="Food">Food</option>
+                                <option value="Home appliances">Home appliances</option>
+                                <option value="Electric appliances">Electric appliances</option>
+                                <option value="Electronics">Electronics</option>
+                                <option value="Computers">Computers</option>
+                                <option value="Phones items">Phones items</option>
+                                <option value="Medical appliances">Medical appliances</option>
+                                <option value="Tools">Tools</option>
+                                <option value="Constructions tools">Constructions tools</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="placeIn" class="block text-gray-700">Place In</label>
+                            <select id="placeIn" name="placeIn" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                                <option value="Store">Store</option>
+                                <option value="Home">Home</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="logo" class="block text-gray-700">Upload Logo</label>
+                            <input type="file" id="logo" name="logo" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Store Address Group -->
+                <fieldset class="border border-gray-300 p-4 rounded mb-4">
+                    <legend class="text-lg font-semibold">Store Address</legend>
+                    <div id="addressContainer">
+                        <div class="grid grid-cols-1 gap-4 md:grid-cols-2 mb-4">
+                            <div>
+                                <label for="province" class="block text-gray-700">Province</label>
+                                <select id="province" name="province" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                                    <option value="Baghdad">بغداد</option>
+                                    <option value="Basra">البصرة</option>
+                                    <option value="Duhok">دهوك</option>
+                                    <option value="Erbil">أربيل</option>
+                                    <option value="Kirkuk">كركوك</option>
+                                    <option value="Najaf">النجف</option>
+                                    <option value="Sulaymaniyah">السليمانية</option>
+                                    <option value="Karbala">كربلاء</option>
+                                    <option value="Maysan">ميسان</option>
+                                    <option value="Wasit">واسط</option>
+                                    <option value="Babylon">بابل</option>
+                                    <option value="Diyala">ديالى</option>
+                                    <option value="Salahaddin">صلاح الدين</option>
+                                    <option value="Al-Qadisiyyah">القادسية</option>
+                                    <option value="Al-Muthanna">المثنى</option>
+                                    <option value="Anbar">الأنبار</option>
+                                    <option value="Nineveh">نينوى</option>
+                                    <option value="Al-Samawah">السماوة</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="cityName" class="block text-gray-700">City Name</label>
+                                <input type="text" id="cityName" name="cityName" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                            </div>
+                            <div>
+                                <label for="neighborhood" class="block text-gray-700">Neighborhood</label>
+                                <input type="text" id="neighborhood" name="neighborhood" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                            </div>
+                            <div>
+                                <label for="town" class="block text-gray-700">Town</label>
+                                <input type="text" id="town" name="town" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                            </div>
+                            <div class="col-span-2">
+                                <label for="describe" class="block text-gray-700">Describe</label>
+                                <textarea id="describe" name="describe" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="bg-green-500 text-white py-2 px-4 rounded shadow hover:bg-green-600" id="addAddress">+ Add Address</button>
+                </fieldset>
+
+                <!-- Status Group -->
+                <fieldset class="border border-gray-300 p-4 rounded mb-4">
+                    <legend class="text-lg font-semibold">Status</legend>
+                    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                        <div>
+                            <label for="status" class="block text-gray-700">Status</label>
+                            <select id="status" name="status" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                                <option value="Active">Active</option>
+                                <option value="Inactive">Inactive</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="startDate" class="block text-gray-700">Starting Day</label>
+                            <input type="date" id="startDate" name="startDate" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Product Posted Group -->
+                <fieldset class="border border-gray-300 p-4 rounded mb-4">
+                    <legend class="text-lg font-semibold">Product Posted</legend>
+                    <div id="productList" class="grid grid-cols-1 gap-4 md:grid-cols-2"></div>
+                </fieldset>
+
+                <button type="submit" class="bg-yellow-700 text-white py-2 px-4 rounded shadow hover:bg-yellow-800">Update Vender</button>
+            </form>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-4 text-center mt-auto">
+        <p>&copy; 2024 BBox Admin. All rights reserved.</p>
+    </footer>
+
+    <!-- Include jQuery script file -->
+    <script src="scripts.js"></script>
+    <script>
+        $(document).ready(function() {
+            var vendorId = new URLSearchParams(window.location.search).get('vendorId');
+
+            // Load vendor data (simulate fetching from backend)
+            var vendorData = {
+                vendorId: vendorId,
+                businessName: 'Vendor One',
+                ownerFirstName: 'John',
+                ownerLastName: 'Doe',
+                phone1: '123456789',
+                phone2: '987654321',
+                email: 'vendor@example.com',
+                branchNumber: '001',
+                sellingType: 'Automotive',
+                placeIn: 'Store',
+                logo: 'logo1.png',
+                addresses: [
+                    { province: 'Baghdad', cityName: 'Baghdad', neighborhood: 'Neighborhood 1', town: 'Town 1', describe: 'Description 1' },
+                    { province: 'Basra', cityName: 'Basra', neighborhood: 'Neighborhood 2', town: 'Town 2', describe: 'Description 2' }
+                ],
+                status: 'Active',
+                startDate: '2024-01-01',
+                products: [
+                    { productId: 'P123', name: 'Product One', date: '2024-01-01', listedBy: 'John Doe' },
+                    { productId: 'P456', name: 'Product Two', date: '2024-02-01', listedBy: 'Jane Doe' }
+                ]
+            };
+
+            // Fill vendor form with data
+            $('#businessName').val(vendorData.businessName);
+            $('#ownerFirstName').val(vendorData.ownerFirstName);
+            $('#ownerLastName').val(vendorData.ownerLastName);
+            $('#phone1').val(vendorData.phone1);
+            $('#phone2').val(vendorData.phone2);
+            $('#email').val(vendorData.email);
+            $('#branchNumber').val(vendorData.branchNumber);
+            $('#sellingType').val(vendorData.sellingType);
+            $('#placeIn').val(vendorData.placeIn);
+            $('#status').val(vendorData.status);
+            $('#startDate').val(vendorData.startDate);
+
+            // Display addresses
+            vendorData.addresses.forEach(function(address, index) {
+                if (index < 2) {
+                    var addressHtml = `
+                        <fieldset class="border border-gray-300 p-4 rounded mb-4">
+                            <legend class="text-lg font-semibold">Store Address ${index + 1}</legend>
+                            <div class="grid grid-cols-1 gap-4 md:grid-cols-2 mb-4">
+                                <div>
+                                    <label for="province" class="block text-gray-700">Province</label>
+                                    <select id="province" name="province" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                                        <option value="Baghdad">بغداد</option>
+                                        <option value="Basra">البصرة</option>
+                                        <option value="Duhok">دهوك</option>
+                                        <option value="Erbil">أربيل</option>
+                                        <option value="Kirkuk">كركوك</option>
+                                        <option value="Najaf">النجف</option>
+                                        <option value="Sulaymaniyah">السليمانية</option>
+                                        <option value="Karbala">كربلاء</option>
+                                        <option value="Maysan">ميسان</option>
+                                        <option value="Wasit">واسط</option>
+                                        <option value="Babylon">بابل</option>
+                                        <option value="Diyala">ديالى</option>
+                                        <option value="Salahaddin">صلاح الدين</option>
+                                        <option value="Al-Qadisiyyah">القادسية</option>
+                                        <option value="Al-Muthanna">المثنى</option>
+                                        <option value="Anbar">الأنبار</option>
+                                        <option value="Nineveh">نينوى</option>
+                                        <option value="Al-Samawah">السماوة</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="cityName" class="block text-gray-700">City Name</label>
+                                    <input type="text" id="cityName" name="cityName" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                                </div>
+                                <div>
+                                    <label for="neighborhood" class="block text-gray-700">Neighborhood</label>
+                                    <input type="text" id="neighborhood" name="neighborhood" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                                </div>
+                                <div>
+                                    <label for="town" class="block text-gray-700">Town</label>
+                                    <input type="text" id="town" name="town" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                                </div>
+                                <div class="col-span-2">
+                                    <label for="describe" class="block text-gray-700">Describe</label>
+                                    <textarea id="describe" name="describe" class="w-full py-2 px-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500"></textarea>
+                                </div>
+                            </div>
+                        </fieldset>
+                    `;
+                    $('#addressContainer').append(addressHtml);
+                    $('#addressContainer select').last().val(address.province);
+                    $('#addressContainer input[name="cityName"]').last().val(address.cityName);
+                    $('#addressContainer input[name="neighborhood"]').last().val(address.neighborhood);
+                    $('#addressContainer input[name="town"]').last().val(address.town);
+                    $('#addressContainer textarea[name="describe"]').last().val(address.describe);
+                }
+            });
+
+            // Display products
+            vendorData.products.forEach(function(product) {
+                var productHtml = `
+                    <div class="p-4 bg-white border border-gray-300 rounded shadow">
+                        <h3 class="text-xl font-bold text-gray-700">${product.name}</h3>
+                        <p class="text-gray-500">Listed by: ${product.listedBy}</p>
+                        <p class="text-gray-500">Date: ${product.date}</p>
+                    </div>
+                `;
+                $('#productList').append(productHtml);
+            });
+
+            // Form submission for update
+            $('#updateVenderForm').submit(function(event) {
+                event.preventDefault();
+                // Collect form data and send via AJAX
+                var updatedVenderData = $(this).serializeArray();
+                var venderData = {};
+                updatedVenderData.forEach(function(field) {
+                    venderData[field.name] = field.value;
+                });
+
+                // AJAX call to update vendor data
+                $.ajax({
+                    url: 'http://localhost:3000/update_vender',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(venderData),
+                    success: function(response) {
+                        alert('Vendor information updated successfully.');
+                    },
+                    error: function(error) {
+                        alert('An error occurred while updating vendor information.');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

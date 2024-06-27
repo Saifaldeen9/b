@@ -1,0 +1,46 @@
+[
+  {
+    "productName": "مخلل",
+    "productCategory": "Food",
+    "productDescription": "مصانع تعليب كربلاء",
+    "productPrice": "3000",
+    "productStock": "33",
+    "vendorId": "V1FCJ8QARB",
+    "images": [
+      "uploads\\1719454925354-Ajprof.jpg"
+    ]
+  },
+  {
+    "productName": "مخلل",
+    "productCategory": "Food",
+    "productDescription": "مصانع تعليب كربلاء",
+    "productPrice": "3000",
+    "productStock": "33",
+    "vendorId": "V1FCJ8QARB",
+    "images": [
+      "uploads\\1719454925356-Ajprof.jpg"
+    ]
+  },
+  {
+    "productName": "صاريب",
+    "productCategory": "Automotive",
+    "productDescription": "محمصه",
+    "productPrice": "4000",
+    "productStock": "34",
+    "vendorId": "V1FCJ8QARB",
+    "images": [
+      "uploads\\1719454983276-bbox-paner.jpg"
+    ]
+  },
+  {
+    "productName": "صاريب",
+    "productCategory": "Automotive",
+    "productDescription": "محمصه",
+    "productPrice": "4000",
+    "productStock": "34",
+    "vendorId": "V1FCJ8QARB",
+    "images": [
+      "uploads\\1719454983277-bbox-paner.jpg"
+    ]
+  }
+]
